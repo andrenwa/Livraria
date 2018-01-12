@@ -42,15 +42,24 @@ public class Livrodao implements Dao<Livro, Integer> {
 		return livro;
 	}
 
-	
-	
 	public void alterar(Livro entidade) {
 		// TODO Auto-generated method stub
 
 	}
 
-	public void salvar(Livro entidade) {
-		// TODO Auto-generated method stub
+	public void salvar(Livro livro) {
+
+		try (Connection conexao = FabricaConexao.getConexao();
+				PreparedStatement consulta = conexao.prepareStatement(SALVAR_SQL);) {
+			consulta.setString(1, livro.getTitulo());
+			consulta.setString(2, livro.getAutor());
+			consulta.setDouble(3, livro.getPreco());
+			consulta.setString(4, livro.getImagem());
+			consulta.setString(5, livro.getDescricao());
+			consulta.execute();
+		} catch (SQLException e) {
+			LOG.severe(e.toString());
+		}
 
 	}
 
@@ -63,32 +72,31 @@ public class Livrodao implements Dao<Livro, Integer> {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
+
 	public List<Livro> consultar(String titulo) {
 		ArrayList<Livro> lista = new ArrayList<Livro>();
 		try (Connection conexao = FabricaConexao.getConexao();
-		PreparedStatement consulta = conexao.prepareStatement(CONSULTAR_SQL);) {
-		consulta.setString(1, "%" + titulo.toUpperCase() + "%");
-		ResultSet resultado = consulta.executeQuery();
-		while (resultado.next()) {
-		Livro livro = new Livro();
-		livro.setAutor(resultado.getString("AUTOR"));
-		livro.setCodigo(resultado.getInt("COD_LIVRO"));
-		livro.setImagem(resultado.getString("IMAGEM"));
-		livro.setPreco(resultado.getDouble("PRECO"));
-		livro.setTitulo(resultado.getString("TITULO"));
-		livro.setDescricao(resultado.getString("DESCRICAO"));
-		lista.add(livro);
-		}
-		resultado.close();
+				PreparedStatement consulta = conexao.prepareStatement(CONSULTAR_SQL);) {
+			consulta.setString(1, "%" + titulo.toUpperCase() + "%");
+			ResultSet resultado = consulta.executeQuery();
+			while (resultado.next()) {
+				Livro livro = new Livro();
+				livro.setAutor(resultado.getString("AUTOR"));
+				livro.setCodigo(resultado.getInt("COD_LIVRO"));
+				livro.setImagem(resultado.getString("IMAGEM"));
+				livro.setPreco(resultado.getDouble("PRECO"));
+				livro.setTitulo(resultado.getString("TITULO"));
+				livro.setDescricao(resultado.getString("DESCRICAO"));
+				lista.add(livro);
+			}
+			resultado.close();
 		} catch (SQLException e) {
-		LOG.severe(e.toString());
+			LOG.severe(e.toString());
 		}
 		return lista;
-		}
-	
-	
-	
-}
+	}
 
+	private static final String SALVAR_SQL = "INSERT INTO ESTOQUE (TITULO, AUTOR,\r\n"
+			+ "PRECO, IMAGEM, DESCRICAO) VALUES (?,?,?,?,?)\"";
+
+}

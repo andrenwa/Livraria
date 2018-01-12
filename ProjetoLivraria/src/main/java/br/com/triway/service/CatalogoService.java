@@ -31,4 +31,9 @@ public class CatalogoService {
 		return livro;
 	}
 
+	public void cadastroLivro(Livro livro){
+		Livrodao dao = new Livrodao();
+		dao.salvar(livro);
+		}
+	
 }
