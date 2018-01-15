@@ -9,11 +9,11 @@
 				<div class="panel-heading">Cadastro</div>
 				<div class="panel-body">
 					<h:panelGrid>
-						<h:form enctype="multipart/form-data" id="img-livro">
-							<h:inputFile id="file" value="#{livroBean.file}">
-								<f:ajax listener="#{livroBean.upload()}" />
-							</h:inputFile>
-						</h:form>
+<!-- 						<h:form enctype="multipart/form-data" id="img-livro"> -->
+<!-- 							<h:inputFile id="file" value="#{livroBean.file}"> -->
+<!-- 								<f:ajax listener="asdf" /> -->
+<!-- 							</h:inputFile> -->
+<!-- 						</h:form> -->
 						<h:form id="lvr">
 							<div class="form-group">
 								<h:outputLabel value="Titulo" for="titulo" />
@@ -35,7 +35,7 @@
 									required="true" class="form-control" />
 							</div>
 							<h:commandButton value="Adicionar Livro"
-								action="#{livroBean.cadastrar()}" />
+								action="#{livroBean.cadastrar}" />
 						</h:form>
 					</h:panelGrid>
 				</div>

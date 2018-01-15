@@ -13,7 +13,7 @@ import br.com.triway.service.CatalogoService;
 import javax.servlet.http.Part;
 
 @ManagedBean(name="livroBean")
-@ViewScoped
+@SessionScoped
 public class LivroBean implements Serializable {
 
 	
@@ -22,19 +22,21 @@ public class LivroBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static final String RESULTADO = "Resultado";
+	private static final String RESULTADO = "/Resultado.xhtml";
 	private static final String LIVRO = "Livro";
 	private static final String SUCESSO = "Sucesso";
-	private static final String autor="autor";
-	private static final Double preco=null;
 	private static final String IMAGEM="/imagens";
-	private static final String descricao="Descricao";
+	
+	private String descricao;
+	private String autor;
+	private Double preco;
 	private String titulo;
 	private Livro livro;
 	private List<Livro> livros;
 
 	
 	private Part file;
+	
 	public void upload(){
 	 }
 
@@ -49,21 +51,64 @@ public class LivroBean implements Serializable {
 		return SUCESSO;
 	}
 
-	public static String getAutor() {
+	
+	
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+
+
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+
+
+
+	public String getAutor() {
 		return autor;
 	}
 
-	public static Double getPreco() {
+
+
+
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+
+
+
+
+	public Double getPreco() {
 		return preco;
 	}
+
+
+
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
+
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+
 
 	public static String getImagem() {
 		return IMAGEM;
 	}
 
-	public static String getDescricao() {
-		return descricao;
-	}
+
+
 
 	public String getTitulo() {
 		return titulo;
@@ -93,6 +138,11 @@ public class LivroBean implements Serializable {
 	public void init() {
 		CatalogoService service = new CatalogoService();
 		System.out.println("LivroBean.init()");
+//		
+//		titulo = "tituloqualquer";
+//		preco=4.5;
+//		autor="antonio";
+//		descricao="sasda";
 	}
 
 	public String pesquisar() {
@@ -116,9 +166,11 @@ public class LivroBean implements Serializable {
 		livro.setPreco(preco);
 		livro.setImagem("imagens/");
 		livro.setDescricao(descricao);
+		
 		System.out.println("LivroBean.cadastrar()");
 		service.cadastroLivro(livro);
-		return SUCESSO;
+
+		return "/Home.xhtml";
 	}
 
 

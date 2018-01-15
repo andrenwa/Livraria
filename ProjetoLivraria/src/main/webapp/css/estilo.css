@@ -4,40 +4,47 @@ body {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
+#imgHeader {
+	width: 100%;
+}
+
 .container {
 	position: relative;
 	margin: 0 auto;
+}
+
+.page {
 	min-height: 100%;
 }
 
-.content {
+/* .centroPagina {
+	min-height: 510px;
+} */
+
+.conteudo {
 	margin-bottom: 1000px;
 }
 
 /* rodape */
 .footers {
 	background-image: url(../imagens/footers.png);
+	background-size: 100% 100%;
 	clear: both;
-	padding: 20px 20px;
 	margin-top: 10px;
-max-height: 5px;
 	bottom: 0;
 }
 
-
 #logo-rodape {
 	width: 150px;
-	height:100px;
+	height: 100px;
 	position: relative;
 	top: 15px;
-	
-	
 }
 
 .social {
-	position: absolute;
-	top: 12px;
+	float: right; top : 12px;
 	right: 0;
+	top: 12px;
 }
 
 .social li {
@@ -49,9 +56,7 @@ max-height: 5px;
 	height: 32px;
 	width: 32px;
 	display: block;
-
 }
-
 
 /* menu lateral */
 .busca, .menu-departamentos {
@@ -142,7 +147,7 @@ max-height: 5px;
 }
 
 #img-livro {
-	width: 150px;
+	width: 100px;
 	margin: 2px;
 	padding: 5px 1px;
 	float: left;

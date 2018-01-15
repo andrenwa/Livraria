@@ -8,32 +8,37 @@
 	<title><ui:insert name="titulo">Livraria</ui:insert></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 
-<!-- 	<h:outputStylesheet library="css" name="reset.css" /> -->
-<!-- 	<h:outputStylesheet library="css" name="bootstrap.css" /> -->
-<!--   	<h:outputStylesheet  name="css/estilo.css" /> -->
-	
-  	<link type="text/css" rel="stylesheet" href="css/estilo.css" />
+	<!-- 	<h:outputStylesheet library="css" name="reset.css" /> -->
+	<!-- 	<h:outputStylesheet library="css" name="bootstrap.css" /> -->
+	<!--   	<h:outputStylesheet  name="css/estilo.css" /> -->
 
+	<link type="text/css" rel="stylesheet" href="css/estilo.css" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+		integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+		crossorigin="anonymous" />
 </h:head>
 <h:body>
 
-<div class="page">
+	<div class="page">
 		<div class="header container">
 			<ui:insert name="header">
 				<ui:include src="/WEB-INF/template/CabecalhoBasico.xhtml" />
 			</ui:insert>
 		</div>
-		<div class="container">
+		<div class="container centroPagina">
 			<div class="row">
-				<div class="col-md-3">
+				<div>
 					<ui:insert name="sidebar">
 						<ui:include src="/WEB-INF/template/MenuBuscar.xhtml" />
 					</ui:insert>
 				</div>
-				<div class="col-md-9">
-					<ui:insert name="content">
-						<ui:include src="/WEB-INF/template/ConteudoBasico.xhtml" />
-					</ui:insert>
+				<div>
+					<div>
+						<ui:insert name="conteudo">
+							<ui:include src="/WEB-INF/template/ConteudoBasico.xhtml" />
+						</ui:insert>
+					</div>
 				</div>
 			</div>
 		</div>

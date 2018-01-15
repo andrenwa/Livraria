@@ -16,6 +16,8 @@ public class Livrodao implements Dao<Livro, Integer> {
 			+ " PRECO, DESCRICAO FROM ESTOQUE WHERE COD_LIVRO = ?";
 	private static final String CONSULTAR_SQL = "SELECT COD_LIVRO, TITULO, AUTOR, PRECO,"
 			+ " IMAGEM, DESCRICAO FROM ESTOQUE WHERE TITULO LIKE ?";
+	
+	private static final String SALVAR_SQL = "INSERT INTO ESTOQUE (TITULO, AUTOR, PRECO, IMAGEM, DESCRICAO) VALUES (?,?,?,?,?)";
 
 	public Livro consultar(Integer codigo) {
 		Livro livro = null;
@@ -96,7 +98,6 @@ public class Livrodao implements Dao<Livro, Integer> {
 		return lista;
 	}
 
-	private static final String SALVAR_SQL = "INSERT INTO ESTOQUE (TITULO, AUTOR,\r\n"
-			+ "PRECO, IMAGEM, DESCRICAO) VALUES (?,?,?,?,?)\"";
+
 
 }
