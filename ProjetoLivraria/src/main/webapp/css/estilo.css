@@ -161,3 +161,22 @@ body {
 	margin: 15px;
 	position: relative;
 }
+
+.menu-opcoes ul li{
+	display: inline-block;
+}
+
+.menu-opcoes  a{
+	    color: white !important;
+}
+
+.menu-opcoes ul{
+	display: inline-block;
+	
+	position:absolute;
+	font-size:1.5em;
+	width:300px;
+	left: 700px;
+    top: 50px;
+
+}
